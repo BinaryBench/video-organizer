@@ -75,6 +75,8 @@ def copyfile(src, dst):
         shutil.copyfile(src, get_file_name(dst))
     except PermissionError:
         print("unable to copy: " + src)
+    except FileNotFoundError:
+        print("unable to find: " + src)
 
 
 def movefiles(src, dst):
@@ -91,7 +93,12 @@ def movefiles(src, dst):
         movefile(s, d)
 
 def movefile(src, dst):
-    shutil.move(src, get_file_name(dst))
+    try:
+        shutil.move(src, get_file_name(dst))
+    except PermissionError:
+        print("unable to copy: " + src)
+    except FileNotFoundError:
+        print("unable to find: " + src)
 
 def get_file_name(file):
     if not os.path.exists(file):
