@@ -1,6 +1,4 @@
-import os
-import itertools
-from mylib import *
+from CreateVideoFolder import *
 
 source_dir = os.getcwd()
 
